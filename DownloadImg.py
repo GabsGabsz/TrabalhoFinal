@@ -7,8 +7,23 @@ class ImageDownloader:
         self.save_path = save_path
         self.allowed_extensions = ['.png', '.jpg']
         self.image_path = ""
+    
+    def verifica_Caminho(self, caminhoDownload): 
+        externalUrl=["https:","http:"]
+        listaurl2 = caminhoDownload.split("//")
+        if(listaurl2[0] not in externalUrl):
+            print("Link interno")
+            return True
+        else:
+            print("Link externo")
+            return False
+        
 
     def download_image(self, url):
+        if( self.verifica_Caminho(url.strip())):
+            return url
+        
+        
         response = requests.get(url)
         if response.status_code == 200:
             content_type = response.headers.get('content-type')
@@ -38,5 +53,3 @@ def  main():
     nova_imagem = Imagem.Imagem("Nova imagem",caminho)
     nova_imagem.exibirPath()
     nova_imagem.exibir()
-
-main()
