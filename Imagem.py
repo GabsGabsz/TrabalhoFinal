@@ -1,6 +1,4 @@
 
-
-
 class Imagem:
     
     def __init__(self, nome,caminho):
@@ -8,7 +6,6 @@ class Imagem:
         self.caminho = caminho
         print(self.caminho,caminho)
         
-    
     def __str__(self):
         return f"Imagem: {self.nome}, Caminho: {self.caminho}"
 

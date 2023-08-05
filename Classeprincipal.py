@@ -11,19 +11,18 @@ while True:
 
     match escolha:
         # imagem = #chamar a função
-       case 1:
+        case 1:
           url = input("Digite o URL da imagem: ")
           DownloadImg.main()
           break
-    #elif escolha == 2:
+        case 2:
         # filtro_escolha = #chamar a função
-        #if filtro_escolha:
-           # print(f"Filtro escolhido: {filtro_escolha}")
-    #elif escolha == 3:
+            if filtro_escolha:
+                print(f"Filtro escolhido: {filtro_escolha}")
+        case 3:
         #chamar a função
-       # pass
-    #elif escolha == 4:
+            pass
+        case 4:
        # print("Encerrando o programa.")
-       # break
-   # else:
-       # print("Opção inválida. Tente novamente.\n")#
+            break
+        
