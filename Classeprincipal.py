@@ -12,7 +12,6 @@ while True:
     match escolha:
         # imagem = #chamar a função
         case 1:
-          url = input("Digite o URL da imagem: ")
           DownloadImg.main()
           break
         case 2:
