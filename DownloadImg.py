@@ -47,7 +47,6 @@ class ImageDownloader:
 def  main():
     save_directory = r"D:\teste"
     downloader = ImageDownloader(save_directory)
-
     image_url = input("Digite o URL da imagem: ")
     caminho = downloader.download_image(image_url)
     nova_imagem = Imagem.Imagem("Nova imagem",caminho)
