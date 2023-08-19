@@ -1,6 +1,9 @@
+import Filtros
 import DownloadImg
 import os
 from Imagem import Imagem
+
+
 while True:
     print("----------- MENU ---------------")
     print("1. Informar o caminho da imagem")
@@ -17,8 +20,8 @@ while True:
           DownloadImg.main()
         case 2:
         # filtro_escolha = #chamar a função
-            if filtro_escolha:
-                print(f"Filtro escolhido: {filtro_escolha}")
+            Filtros.FiltrosMenu()
+            pass
         case 3:
         #chamar a função
             diretorio_imagens_salvas = os.path.join(os.path.dirname(os.path.abspath(__file__)), "imagens_salvas")
