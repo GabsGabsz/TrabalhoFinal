@@ -1,6 +1,6 @@
 import os
 import Imagem
-from PIL import Image
+from PIL import Image,ImageFilter
 
 
 def FiltrosMenu():
@@ -46,15 +46,27 @@ def FiltrosMenu():
                 pass
 
             case 5:
+                end_image = input("Digite o caminho da imagem: ")
+                filtro_contorno = ContourFilter(end_image)
+                contorno_aplicado = filtro_contorno.apply_filter()
+                img = Image.open(contorno_aplicado)
+                img.show()
             
                 pass
             case 6:
+                end_image = input("Digite o caminho da imagem: ")
+                filtro_blur = BlurredFilter(end_image)
+                blur_aplicado = filtro_blur.apply_filter()
+                img = Image.open(blur_aplicado)
+                img.show()
             
                 pass
 
             case 7:
 
                 break
+    if __name__ == "__main__":
+        FiltrosMenu()
 
 class GrayScaleFilter:
 
@@ -84,7 +96,31 @@ class NegativeFilter:
         new_image_path = f"{self.image_path.rsplit('.', 1)[0]}_negative.{self.image_path.rsplit('.', 1)[1]}"
         negative_image.save(new_image_path)
         return new_image_path 
-if __name__ == "__main__":
-    FiltrosMenu()
+
+
+class ContourFilter:
+
+    def __init__(self, image_path):
+        self.image_path = image_path
+
+    def apply_filter(self):
+        img = Image.open(self.image_path)
+        contour_image = img.filter(ImageFilter.CONTOUR)
+        new_image_path = f"{self.image_path.rsplit('.', 1)[0]}_contour.{self.image_path.rsplit('.', 1)[1]}"
+        contour_image.save(new_image_path)
+        return new_image_path
+    
+class BlurredFilter:
+
+    def __init__(self, image_path):
+        self.image_path = image_path
+
+    def apply_filter(self):
+        img = Image.open(self.image_path)
+        blurred_image = img.filter(ImageFilter.BLUR)
+        new_image_path = f"{self.image_path.rsplit('.', 1)[0]}_blurred.{self.image_path.rsplit('.', 1)[1]}"
+        blurred_image.save(new_image_path)
+        return new_image_path
+
  
                
