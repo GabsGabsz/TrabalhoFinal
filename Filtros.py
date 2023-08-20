@@ -36,6 +36,12 @@ def FiltrosMenu():
                 pass
             
             case 4:
+                end_image = input("Digite o caminho da imagem: ")
+                filtro_negativo = NegativeFilter(end_image)
+                negativo_aplicado = filtro_negativo.apply_filter()
+                img = Image.open(negativo_aplicado)
+                img.show()
+                
             
                 pass
 
@@ -66,5 +72,19 @@ class GrayScaleFilter:
         grayscale_image.save(new_image_path)
         # Retorne o caminho da imagem filtrada
         return new_image_path
+    
+class NegativeFilter:
+
+    def __init__(self, image_path):
+        self.image_path = image_path
+
+    def apply_filter(self):
+        img = Image.open(self.image_path)
+        negative_image = Image.eval(img, lambda px: 255 - px)
+        new_image_path = f"{self.image_path.rsplit('.', 1)[0]}_negative.{self.image_path.rsplit('.', 1)[1]}"
+        negative_image.save(new_image_path)
+        return new_image_path 
+if __name__ == "__main__":
+    FiltrosMenu()
  
                
