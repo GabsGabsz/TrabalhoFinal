@@ -28,10 +28,21 @@ def FiltrosMenu():
 
                 pass
             case 2:
+                end_image = input("Digite o caminho da imagem: ")
+                filtro_pretoebranco = pretoebrancoFilter(end_image)
+                pretoebranco_aplicado = filtro_pretoebranco.apply_filter()
+                img = Image.open(pretoebranco_aplicado)
+                img.show()
             
                 pass
 
             case 3:
+                end_image = input("Digite o caminho da imagem: ")
+                filtro_cartoon = CartoonFilter(end_image)
+                cartoon_aplicado = filtro_cartoon.apply_filter()
+                img = Image.open(cartoon_aplicado)
+                img.show()
+
             
                 pass
             
@@ -84,6 +95,30 @@ class GrayScaleFilter:
         grayscale_image.save(new_image_path)
         # Retorne o caminho da imagem filtrada
         return new_image_path
+    
+class pretoebrancoFilter:
+        
+        def __init__(self, image_path):
+            self.image_path = image_path
+    
+        def apply_filter(self):
+            img = Image.open(self.image_path)
+            pretoebranco_image = img.convert("1")
+            new_image_path = f"{self.image_path.rsplit('.', 1)[0]}_pretoebranco.{self.image_path.rsplit('.', 1)[1]}"
+            pretoebranco_image.save(new_image_path)
+            return new_image_path    
+
+class CartoonFilter:
+
+    def __init__(self, image_path):
+        self.image_path = image_path
+
+    def apply_filter(self):
+        img = Image.open(self.image_path)
+        cartoon_image = img.filter(ImageFilter.EDGE_ENHANCE_MORE)
+        new_image_path = f"{self.image_path.rsplit('.', 1)[0]}_cartoon.{self.image_path.rsplit('.', 1)[1]}"
+        cartoon_image.save(new_image_path)
+        return new_image_path        
     
 class NegativeFilter:
 
